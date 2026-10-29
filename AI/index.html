@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost Story Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial;
+            background: #151515;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        h1 { color: #ff4444; }
+        input, button {
+            padding: 12px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        button {
+            background: #ff4444;
+            color: white;
+            cursor: pointer;
+        }
+        #story {
+            margin: 20px auto;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>👻 Ghost Story Generator</h1>
+    <p>Enter a topic to get a spooky story!</p>
+
+    <input id="topic" placeholder="Enter a topic">
+    <button onclick="generateStory()">Generate Story</button>
+
+    <div id="story"></div>
+
+    <script>
+        function generateStory() {
+            let topic = document.getElementById("topic").value.trim();
+
+            if (topic === "") {
+                document.getElementById("story").innerHTML =
+                    "Please enter a topic!";
+                return;
+            }
+
+            let stories = [
+                "One dark night, TOPIC appeared near an abandoned house. Suddenly, a mysterious shadow followed every step. When TOPIC turned around, nobody was there!",
+                "At midnight, TOPIC heard a strange noise from the attic. The door opened slowly, and a cold voice whispered, 'I have been waiting for you!'",
+                "TOPIC walked alone through a dark forest. Suddenly, a ghost appeared behind a tree and whispered, 'You should never have come here!'"
+            ];
+
+            let random = Math.floor(Math.random() * stories.length);
+            let result = stories[random].replaceAll("TOPIC", topic);
+
+            document.getElementById("story").innerHTML =
+                "<h2>Your Ghost Story 👻</h2><p>" + result + "</p>";
+        }
+    </script>
+
+</body>
+</html>
